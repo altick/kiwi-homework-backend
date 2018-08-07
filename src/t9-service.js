@@ -20,7 +20,19 @@ const reverseMap = {
     'w': 9, 'x': 9, 'y': 9, 'z': 9
 };
 
+function validateInput(input) {
+    let number = parseInt(input);
+    if(!number) {
+        return false;
+    }
+    return true;
+}
+
 function getExpansions(input) {
+    if(!validateInput(input)) {
+        throw new Error('Invalid input');
+    }
+
     let expansions = [];
     Array.from(input).forEach((char, i) => {
         let num = parseInt(char);
@@ -45,6 +57,10 @@ function getExpansions(input) {
 }
 
 function getTextonyms(input, dictionary) {
+    if(!validateInput(input)) {
+        throw new Error('Invalid input');
+    }
+
     let textonyms = dictionary[input] || [];
     return textonyms;
 }

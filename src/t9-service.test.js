@@ -1,5 +1,11 @@
 const t9 = require('./t9-service');
 
+it('Should throw error for invalid input for expansion', () => {
+    const input = 'abc';
+
+    expect(() => t9.getExpansions(input)).toThrow('Invalid input');
+});
+
 it('Should return corresponding letters for the number when single number entered', () => {
     const expected = ['a', 'b', 'c'];
     const input = '2';
@@ -33,6 +39,12 @@ it('Should return correct expansion for three numbers input', () => {
     const input = '234';
     let result = t9.getExpansions(input);
     expect(result).toEqual(expect.arrayContaining(expected));
+});
+
+it('Should throw error for invalid input for textonym', () => {
+    const input = 'abc';
+
+    expect(() => t9.getExpansions(input)).toThrow('Invalid input');
 });
 
 it('Should return empty array if there is no textonym for the given numeric string', () => {
