@@ -10,6 +10,8 @@ it('Should return corresponding letters for the number when single number entere
     const expected = ['a', 'b', 'c'];
     const input = '2';
     let result = t9.getExpansions(input);
+
+    expect(result.length).toBe(expected.length);
     expect(result).toEqual(expect.arrayContaining(expected));
 });
 
@@ -21,6 +23,8 @@ it('Should return correct expansion for two numbers input', () => {
     ];
     const input = '23';
     let result = t9.getExpansions(input);
+
+    expect(result.length).toBe(expected.length);
     expect(result).toEqual(expect.arrayContaining(expected));
 });
 
@@ -37,7 +41,21 @@ it('Should return correct expansion for three numbers input', () => {
         'cfg', 'cfh', 'cfi'
     ];
     const input = '234';
-    let result = t9.getExpansions(input);
+    let result = t9.getExpansions(input, 40);
+
+    expect(result.length).toBe(expected.length);
+    expect(result).toEqual(expect.arrayContaining(expected));
+});
+
+it('Should limit number of expansions', () => {
+    const expected = [
+        'adg', 'adh', 'adi', 
+        'aeg', 'aeh'
+    ];
+    const input = '234';
+    let result = t9.getExpansions(input, 5);
+
+    expect(result.length).toBe(expected.length);
     expect(result).toEqual(expect.arrayContaining(expected));
 });
 

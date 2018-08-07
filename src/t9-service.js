@@ -28,7 +28,7 @@ function validateInput(input) {
     return true;
 }
 
-function getExpansions(input) {
+function getExpansions(input, limit = 20) {
     if(!validateInput(input)) {
         throw new Error('Invalid input');
     }
@@ -52,18 +52,17 @@ function getExpansions(input) {
             expansions = newExpansions;
         }
     });
-
-    return expansions;
+    return expansions.slice(0, limit);
 }
 
-function getTextonyms(input, dictionary) {
+function getTextonyms(input, dictionary, limit = 20) {
     if(!validateInput(input)) {
         throw new Error('Invalid input');
     }
 
     let textonyms = dictionary[input] || [];
     if(!textonyms.length) {
-        return getExpansions(input);
+        return getExpansions(input, limit);
     }
 
     return textonyms;

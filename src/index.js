@@ -6,13 +6,15 @@ const app = express()
 
 app.get('/expand/:input', (req, res) => { 
     let input = req.param('input');
-    let expansions = t9.getExpansions(input);
+    let limit = parseInt(req.query.limit);
+    let expansions = t9.getExpansions(input, limit);
     res.send(expansions);
 });
 
 app.get('/predict/:input', (req, res) => { 
     let input = req.params['input'];
-    let textonyms = t9.getTextonyms(input, t9Dict);
+    let limit = parseInt(req.query.limit);
+    let textonyms = t9.getTextonyms(input, t9Dict, limit);
     res.send(textonyms);
 });
 
