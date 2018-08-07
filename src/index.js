@@ -5,7 +5,7 @@ const app = express()
 
 app.get('/', (req, res) => { 
     let input = req.param('input');
-    let txt = t9.getTextonyms(input);
+    let txt = t9.getExpansions(input);
     res.send(txt);
 });
 
