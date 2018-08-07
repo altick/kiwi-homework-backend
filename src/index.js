@@ -4,7 +4,7 @@ const t9Dict = require('./t9-dictionary');
 
 const app = express()
 
-app.get('/expand', (req, res) => { 
+app.get('/expand/:input', (req, res) => { 
     let input = req.param('input');
     let expansions = t9.getExpansions(input);
     res.send(expansions);
