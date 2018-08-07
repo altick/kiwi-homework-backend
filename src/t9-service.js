@@ -62,6 +62,10 @@ function getTextonyms(input, dictionary) {
     }
 
     let textonyms = dictionary[input] || [];
+    if(!textonyms.length) {
+        return getExpansions(input);
+    }
+
     return textonyms;
 }
 

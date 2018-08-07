@@ -47,11 +47,21 @@ it('Should throw error for invalid input for textonym', () => {
     expect(() => t9.getExpansions(input)).toThrow('Invalid input');
 });
 
-it('Should return empty array if there is no textonym for the given numeric string', () => {
+it('Should return expansions if there is no textonym for the given numeric string', () => {
     const dictionary = require('../words-en-t9.json');
 
-    const expected = [];
-    const input = '444444';
+    const expected = [
+        "jj",
+        "jk",
+        "jl",
+        "kj",
+        "kk",
+        "kl",
+        "lj",
+        "lk",
+        "ll"
+    ];
+    const input = '55';
     let result = t9.getTextonyms(input, dictionary);
     expect(result).toEqual(expect.arrayContaining(expected));
 });
