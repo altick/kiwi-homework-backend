@@ -36,6 +36,9 @@ function getExpansions(input, limit = 20) {
     let expansions = [];
     Array.from(input).forEach((char, i) => {
         let num = parseInt(char);
+        if(num < 2 || num > 9) {
+            throw new Error('Invalid number in the numeric string');
+        }
         
         let letters = map[num];
         if(expansions.length == 0) {

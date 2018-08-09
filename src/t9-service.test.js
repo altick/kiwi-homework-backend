@@ -8,6 +8,13 @@ describe('expansions', () => {
         expect(() => t9.getExpansions(input)).toThrow('Invalid input');
     });
     
+    it('Should throw error for invalid number in numeric string', () => {
+        expect(() => t9.getExpansions('20')).toThrow('Invalid number in the numeric string');
+        expect(() => t9.getExpansions('13')).toThrow('Invalid number in the numeric string');
+        expect(() => t9.getExpansions('31')).toThrow('Invalid number in the numeric string');
+        expect(() => t9.getExpansions('301')).toThrow('Invalid number in the numeric string');
+    });
+
     it('Should return corresponding letters for the number when single number entered', () => {
         const expected = ['a', 'b', 'c'];
         const input = '2';
